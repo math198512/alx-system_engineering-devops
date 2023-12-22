@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays "To infinity and beyond" indefinitely.
+
+var=1
+while [ $var == 1 ]
+do
+	echo "To infinity and beyond"
+done
