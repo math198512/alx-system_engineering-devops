@@ -21,8 +21,10 @@ if __name__ == "__main__":
     employee_name = user["name"]
     total_number_of_tasks = len(todos)
     number_of_done_tasks = len(completed_todos)
-    print("Employee {} is done with tasks({}/{}):".format(employee_name,
-                                                          number_of_done_tasks, total_number_of_tasks))
+    print("Employee {} is done with tasks({}/{}):".format(
+        employee_name,
+        number_of_done_tasks,
+        total_number_of_tasks))
     for i in range(number_of_done_tasks):
         print("     ", end="")
         print(completed_todos[i]["title"])
