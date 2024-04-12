@@ -26,5 +26,5 @@ if __name__ == "__main__":
         number_of_done_tasks,
         total_number_of_tasks))
     for i in range(number_of_done_tasks):
-        print("  ", end="")
+        print("\t ", end="")
         print(completed_todos[i]["title"])
