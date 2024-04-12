@@ -25,7 +25,7 @@ if __name__ == "__main__":
     file = f"{employee_id}.csv"
     with open(file, "w") as f:
         for item in todos:
-            f.write('"{}", "{}", "{}", "{}"\n'.format(
+            f.write('"{}","{}","{}","{}"\n'.format(
                 employee_id,
                 user["username"],
                 item["completed"],
