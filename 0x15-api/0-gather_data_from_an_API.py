@@ -15,6 +15,14 @@ if __name__ == "__main__":
     params = {"userId": employee_id}
     todos_res = get(url + "todos", params=params)
     todos = todos_res.json()
+    params1 = {"userId": employee_id, "completed": "true"}
+    completed_todos_res = get(url + "todos", params=params1)
+    completed_todos = completed_todos_res.json()
     employee_name = user["name"]
     total_number_of_tasks = len(todos)
-    print("Employee {} is done with tasks(NUMBER_OF_DONE_TASKS/{})".format(employee_name, total_number_of_tasks))
+    number_of_done_tasks = len(completed_todos)
+    print("Employee {} is done with tasks({}/{}):".format(employee_name,
+                                                          number_of_done_tasks, total_number_of_tasks))
+    for i in range(number_of_done_tasks):
+        print("     ", end="")
+        print(completed_todos[i]["title"])
