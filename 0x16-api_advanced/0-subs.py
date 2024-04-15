@@ -1,19 +1,33 @@
 #!/usr/bin/python3
-"""
-Script that queries subscribers on a given Reddit subreddit.
-"""
+"""function that queries the Reddit API and returns the number of subscribers
+for a given subreddit"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """Return the total number of subscribers on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozilla/5.0"}
+    """function that queries the Reddit API and returns the number of
+    subscribers for a given subreddit"""
+    with open('pw.txt', 'r') as f:
+        pw = f.read()
+    url = f'https://oauth.reddit.com/r/{subreddit}/about.json'
+    headers = {'User-Agent': 'MyAPI/0.0.1'}
+    CLIENT_ID = 'VJEVTB5HwkOSJq8wSdrucg'
+    SECRET_KEY = 'JA0DqIER3KiHc39Oy19cJ43DRsJOTw'
+    auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
+    data = {
+        'grant_type': 'password',
+        'username': 'tarikmath512',
+        'password': 'vKC?!*e68YHF7E!'
+    }
+    res_post = requests.post('https://www.reddit.com/api/v1/access_token',
+                             auth=auth, data=data, headers=headers)
+    TOKEN = res_post.json()['access_token']
+    headers['Authorization'] = f'Bearer {TOKEN}'
+    res1 = requests.get('https://oauth.reddit.com/api/v1/me', headers=headers)
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
+        res_data = response.json()
+        return res_data.get('data').get('subscribers')
     else:
         return 0
