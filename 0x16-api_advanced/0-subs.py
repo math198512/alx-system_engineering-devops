@@ -8,8 +8,6 @@ import requests
 def number_of_subscribers(subreddit):
     """function that queries the Reddit API and returns the number of
     subscribers for a given subreddit"""
-    with open('pw.txt', 'r') as f:
-        pw = f.read()
     url = f'https://oauth.reddit.com/r/{subreddit}/about.json'
     headers = {'User-Agent': 'MyAPI/0.0.1'}
     CLIENT_ID = 'VJEVTB5HwkOSJq8wSdrucg'
