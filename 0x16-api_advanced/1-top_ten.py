@@ -30,4 +30,4 @@ def top_ten(subreddit):
             post = res_data.get('data').get('children')[i]
             print(post.get('data').get('title'))
     else:
-        return 0
+        return None
