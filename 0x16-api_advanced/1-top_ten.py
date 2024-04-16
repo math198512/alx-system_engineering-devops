@@ -8,7 +8,7 @@ import requests
 def top_ten(subreddit):
     """function that queries the Reddit API and returns the number of
     subscribers for a given subreddit"""
-    url = f'https://oauth.reddit.com/r/{subreddit}/hot.json?limit=10'
+    url = f'https://oauth.reddit.com/r/{subreddit}/hot.json'
     headers = {'User-Agent': 'MyAPI/0.0.1'}
     CLIENT_ID = 'VJEVTB5HwkOSJq8wSdrucg'
     SECRET_KEY = 'JA0DqIER3KiHc39Oy19cJ43DRsJOTw'
