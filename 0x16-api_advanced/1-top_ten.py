@@ -22,7 +22,7 @@ def top_ten(subreddit):
                              auth=auth, data=data, headers=headers)
     TOKEN = res_post.json()['access_token']
     headers['Authorization'] = f'Bearer {TOKEN}'
-    # res1 = requests.get('https://oauth.reddit.com/api/v1/me', headers=headers)
+    res1 = requests.get('https://oauth.reddit.com/api/v1/me', headers=headers)
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
         res_data = response.json()
