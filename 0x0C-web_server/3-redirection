@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#istall nginx web server:
+#perform redirect:
 
 apt-get update
 apt-get install -y nginx
