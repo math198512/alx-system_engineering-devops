@@ -16,7 +16,7 @@ def top_ten(subreddit):
     data = {
         'grant_type': 'password',
         'username': 'tarikmath512',
-        'password': 'vKC?!*e68YHF7E!'
+        'password': '8ig8W7Z$e$Zev*z'
     }
     res_post = requests.post('https://www.reddit.com/api/v1/access_token',
                              auth=auth, data=data, headers=headers)
