@@ -11,7 +11,8 @@ def number_of_subscribers(subreddit):
     password = "8ig8W7Z$e$Zev*z"
     CLIENT_ID = "VJEVTB5HwkOSJq8wSdrucg"
     CLIENT_SECRET = "JA0DqIER3KiHc39Oy19cJ43DRsJOTw"
-    client_auth = ""
+    client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
+    post_data = {"grant_type": "password", "username": username, "password": password}
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(url, headers=headers, allow_redirects=False)
