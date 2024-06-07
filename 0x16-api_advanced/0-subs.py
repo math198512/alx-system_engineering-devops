@@ -19,7 +19,7 @@ def number_of_subscribers(subreddit):
     auth_response = requests.post(TOKEN_ACCESS_ENDPOINT, data=post_data, headers=headers, auth=client_auth)
     TOKEN = auth_response.json()['access_token']
     headers['Authorization'] = f'bearer {TOKEN}'
-    url = "https://oauth.reddit.com/r/{}/about.json".format(subreddit)
+    url = "https://oauth.reddit.com/r/{}/about".format(subreddit)
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
