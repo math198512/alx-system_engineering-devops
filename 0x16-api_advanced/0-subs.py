@@ -26,4 +26,4 @@ def number_of_subscribers(subreddit):
         subscribers = data['data']['subscribers']
         return subscribers
     else:
-        return response.status_code 
+        return 0
