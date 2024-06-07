@@ -13,12 +13,17 @@ def number_of_subscribers(subreddit):
     CLIENT_SECRET = "JA0DqIER3KiHc39Oy19cJ43DRsJOTw"
     client_auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
     post_data = {"grant_type": "password", "username": username, "password": password}
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    TOKEN_ACCESS_ENDPOINT = "https://www.reddit.com/api/v1/access_token"
+    
     headers = {"User-Agent": "Mozilla/5.0"}
+    auth_response = requests.post(TOKEN_ACCESS_ENDPOINT, data=post_data, headers=headers, auth=client_auth)
+    TOKEN = auth_response.json()['access_token']
+    headers['Authorization'] = f'bearer {TOKEN}'
+    url = "https://oauth.reddit.com/r/{}/about.json".format(subreddit)
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 200:
         data = response.json()
         subscribers = data['data']['subscribers']
         return subscribers
     else:
-        return 0
+        return response.status_code 
